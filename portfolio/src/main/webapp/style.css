@@ -8,7 +8,7 @@ body{
     color:white;
     background-color:black;
 }
-#header{
+#header{ 
     background-image: url("/images/galaxy.jpeg");
     background-size: cover;
     width:100%;
