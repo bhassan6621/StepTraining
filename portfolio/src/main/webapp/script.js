@@ -15,6 +15,9 @@
 /**
  * Adds a random greeting to the page.
  */
+
+   var count = 0;
+
 function addRandomGreeting() {
   const greetings =
       ['I ran Track and Cross Country all throughout high school',
@@ -25,8 +28,11 @@ function addRandomGreeting() {
         'My current binge is Greys Anatomy'];
 
   // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
+  if(count>=greetings.length){
+      count = 0;
+  }
+  const greeting = greetings[count];
+  count++;
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
