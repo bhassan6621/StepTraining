@@ -37,15 +37,7 @@ button{
     font-size: 18px;
 }
 
-#pictures{
-    width:100px;
-    
-}
-#pictures_row_two{
-    width:100px;
-    
-}
-
 img{
   padding-left:150px;
+  padding-top:50px;
 }
