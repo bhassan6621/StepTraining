@@ -28,7 +28,7 @@ function addRandomGreeting() {
         'My current binge is Greys Anatomy'];
 
   // Pick a random greeting.
-  if(count >= greetings.length){
+  if(count >= greetings.length) {
       count = 0;
   }
   const greeting = greetings[count];
@@ -36,4 +36,19 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+}
+
+function displayName() {
+    const responsePromise = fetch('/data');
+    responsePromise.then(handleResponse);
+}
+
+function handleResponse(response) {
+    const textPromise = response.text();
+    textPromise.then(addNameToDom);
+}
+
+function addNameToDom(name) {
+    const nameContainer = document.getElementById('name-container');
+    nameContainer.innerText = name;
 }
