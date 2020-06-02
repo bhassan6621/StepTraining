@@ -1,43 +1,43 @@
-/* #content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-} */
-
-body{
-    color:white;
-    background-color:black;
+body {
+    color: white;
+    background-color: black;
 }
-#header{
+
+#header {
     background-image: url("/images/galaxy.jpeg");
     background-size: cover;
-    width:100%;
-    height:400px;
+    width: 100%;
+    height: 400px;
     text-align: center;
 }
-#headerText{
-    padding-top:70px;
+
+#headerText {
+    padding-top: 70px;
     text-align: center;
-    color:white;
+    color: white;
     font-size: 60px;
-    font-family:"Arial Black", Gadget, sans-serif;
+    font-family: "Arial Black", Gadget, sans-serif;
     font-weight: bold;
 }
-h2{
+
+h2 {
     text-align: center;
-    color:white;
+    color: white;
     font-size: 25px;
-    font-family:Impact, Charcoal, sans-serif;
+    font-family: Impact, Charcoal, sans-serif;
 }
-button{
+
+button {
     border-color: white;
     border-radius: 25px;
-    color:white;
-    background-color:transparent;
+    color: white;
+    background-color: transparent;
     font-size: 18px;
 }
 
-img{
-  padding-left:150px;
-  padding-top:50px;
+.pictures {
+  padding-left: 150px;
+  padding-top: 50px;
+  width: 300px;
+  height: 300px;
 }
