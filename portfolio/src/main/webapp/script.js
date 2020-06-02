@@ -28,7 +28,7 @@ function addRandomGreeting() {
         'My current binge is Greys Anatomy'];
 
   // Pick a random greeting.
-  if(count>=greetings.length){
+  if(count >= greetings.length){
       count = 0;
   }
   const greeting = greetings[count];
