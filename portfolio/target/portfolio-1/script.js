@@ -16,7 +16,7 @@
  * Adds a random greeting to the page.
  */
 
-   var count = 0;
+var count = 0;
 
 function addRandomGreeting() {
   const greetings =
@@ -38,19 +38,36 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-function displayName() {
-    const responsePromise = fetch('/data');
-    responsePromise.then(handleResponse);
+// function addName() { 
+//     const responsePromise = fetch('/data');
+//     responsePromise.then(handleRequest);
+// }
+
+// function handleRequest(response) {
+//     const textPromise = response.text();
+//     textPromise.then(addNameToDOM);
+// }
+
+// function addNameToDOM(quote) {
+//     const quoteContainer =  document.getElementById('name-container');
+//     quoteContainer.innerText = quote;
+// }
+
+function getServerName(){
+    fetch('/data').then(response => response.json()).then((stats) => {
+        const nameContainer = document.getElementById('name-container');
+        nameContainer.innerHTML="";
+        nameContainer.appendChild(
+            createListElement(stats[0]));
+        nameContainer.appendChild(
+            createListElement(stats[1]));
+        nameContainer.appendChild(
+            createListElement(stats[2]));
+    });
 }
 
-function handleResponse(response) {
-    const textPromise = response.text();
-    textPromise.then(addNameToDom);
-}
-
-function addNameToDom(name) {
-    console.log('adding name to dom ' + name);
-    
-    const nameContainer = document.getElementById('name-container');
-    nameContainer.innerText = name;
+function createListElement(text){
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }

@@ -28,7 +28,7 @@ function addRandomGreeting() {
         'My current binge is Greys Anatomy'];
 
   // Pick a random greeting.
-  if(count >= greetings.length){
+  if(count >= greetings.length) {
       count = 0;
   }
   const greeting = greetings[count];
@@ -38,17 +38,36 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-function addName(){
-    const responsePromise = fetch('/data');
-    responsePromise.then(handleRequest);
+// function addName() { 
+//     const responsePromise = fetch('/data');
+//     responsePromise.then(handleRequest);
+// }
+
+// function handleRequest(response) {
+//     const textPromise = response.text();
+//     textPromise.then(addNameToDOM);
+// }
+
+// function addNameToDOM(quote) {
+//     const quoteContainer =  document.getElementById('name-container');
+//     quoteContainer.innerText = quote;
+// }
+
+function getServerName(){
+    fetch('/data').then(response => response.json()).then((stats) => {
+        const nameContainer = document.getElementById('name-container');
+        nameContainer.innerHTML="";
+        nameContainer.appendChild(
+            createListElement(stats[0]));
+        nameContainer.appendChild(
+            createListElement(stats[1]));
+        nameContainer.appendChild(
+            createListElement(stats[2]));
+    });
 }
 
-function handleRequest(response){
-    const textPromise = response.text();
-    textPromise.then(addNameToDOM);
-}
-
-function addQuoteToDOM(quote){
-    const quoteContainer =  document.getElementByID('name-container');
-    quoteContainer.innerText = quote;
+function createListElement(text){
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }
