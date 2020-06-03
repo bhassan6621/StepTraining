@@ -38,22 +38,6 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-/*the other way of sending a request, via URL
-function addName() { 
-    const responsePromise = fetch('/data');
-    responsePromise.then(handleRequest);
-}
-
-function handleRequest(response) {
-    const textPromise = response.text();
-    textPromise.then(addNameToDOM);
-}
-
-function addNameToDOM(quote) {
-    const quoteContainer =  document.getElementById('name-container');
-    quoteContainer.innerText = quote;
-} */
-
 function getServerName(){
     fetch('/data').then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');

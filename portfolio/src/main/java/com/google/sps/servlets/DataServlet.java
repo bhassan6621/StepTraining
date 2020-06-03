@@ -37,7 +37,6 @@ public class DataServlet extends HttpServlet {
     String json = convertToJsonUsingGson(names);
     response.setContentType("application/json;");
     response.getWriter().println(json);
-
   }
 
   private String convertToJsonUsingGson(ArrayList<String> namesArr) {
