@@ -19,6 +19,7 @@
 var count = 0;
 
 function addRandomGreeting() {
+    console.log("inside script: random function");
   const greetings =
       ['I ran Track and Cross Country all throughout high school',
        'I enjoy baking',
@@ -42,12 +43,10 @@ function getServerName(){
     fetch('/data').then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');
         nameContainer.innerHTML="";
-        nameContainer.appendChild(
-            createListElement(stats[0]));
-        nameContainer.appendChild(
-            createListElement(stats[1]));
-        nameContainer.appendChild(
-            createListElement(stats[2]));
+        for(let i=0; i<stats.length; i++){
+            nameContainer.appendChild(
+            createListElement(stats[i]));
+        }
     });
 }
 

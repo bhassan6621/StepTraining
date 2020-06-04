@@ -26,17 +26,28 @@ import com.google.gson.Gson;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+  
+  private ArrayList<String> names = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> names = new ArrayList<String>();
-    names.add("Bibi");
-    names.add("Sumayyah");
-    names.add("Hassan");
-
     String json = convertToJsonUsingGson(names);
     response.setContentType("application/json;");
     response.getWriter().println(json);
+  }
+
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String inputText = getParameter(request, "text-input", "");
+    names.add(inputText);
+    response.sendRedirect("/index.html");
+  }
+
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+      String value = request.getParameter(name);
+      if (value == null) {
+          return defaultValue;
+      }
+      return value;
   }
 
   private String convertToJsonUsingGson(ArrayList<String> namesArr) {
