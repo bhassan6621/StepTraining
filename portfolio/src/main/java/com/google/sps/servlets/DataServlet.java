@@ -28,7 +28,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
  
- 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
@@ -51,7 +50,6 @@ public class DataServlet extends HttpServlet {
     String json = convertToJsonUsingGson(commentsFromDB);
     response.setContentType("application/json;");
     response.getWriter().println(json);
-
   }
 
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

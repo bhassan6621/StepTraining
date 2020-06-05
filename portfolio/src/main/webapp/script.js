@@ -39,7 +39,7 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-function getServerName(){
+function getServerName() {
     fetch('/data').then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');
         nameContainer.innerHTML="";
@@ -50,7 +50,7 @@ function getServerName(){
     });
 }
 
-function createListElement(text){
+function createListElement(text) {
     const liElement = document.createElement('li');
     liElement.innerText = text;
     return liElement;
