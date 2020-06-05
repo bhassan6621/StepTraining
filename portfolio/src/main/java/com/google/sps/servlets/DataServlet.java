@@ -63,7 +63,7 @@ public class DataServlet extends HttpServlet {
     datastore.put(taskEntity);
 
     response.sendRedirect("/index.html");
-  }
+    }
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
       String value = request.getParameter(name);
