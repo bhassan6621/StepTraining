@@ -1,9 +1,6 @@
 target/
 .idea
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
+pom.xml.*
 release.properties
 .mvn/wrapper/maven-wrapper.jar
 portfolio/target/appengine-staging/**
