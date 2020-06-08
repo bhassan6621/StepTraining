@@ -3,5 +3,5 @@ target/
 pom.xml.*
 release.properties
 .mvn/wrapper/maven-wrapper.jar
-portfolio/target/appengine-staging/**
+portfolio/target/**
 
