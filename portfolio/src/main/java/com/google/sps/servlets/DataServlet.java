@@ -29,6 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import java.util.concurrent.LinkedBlockingQueue; 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
  
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -55,7 +58,7 @@ public class DataServlet extends HttpServlet {
   }
  
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String inputText = getParameter(request, "text-area", "");
+    String inputText = getBodyData(request);
     names.add(inputText);
  
     Entity taskEntity = new Entity("Task");
@@ -63,18 +66,42 @@ public class DataServlet extends HttpServlet {
  
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);
-    
-    StringBuilder text = new StringBuilder();
-    text.append(request.getReader());
-    
-    log("testing to see if i could get the string from body: " + text.toString());
-    // String json = convertToJsonUsingGson(names);
-    // response.setContentType("application/json;");
-    // response.getWriter().println(names);
  
     doGet(request,response);
     }
 
+  private String getBodyData(HttpServletRequest request) throws IOException {
+    String body = null;
+    StringBuilder stringBuilder = new StringBuilder();
+    BufferedReader bufferedReader = null;
+
+    try{
+        InputStream inputStream = request.getInputStream();
+        if (inputStream != null) {
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            char[] charBuffer = new char[128];
+            int bytesRead = -1;
+            while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+                stringBuilder.append(charBuffer, 0, bytesRead);
+            }
+        } else {
+            stringBuilder.append("");
+        }
+    } catch (IOException ex) {
+        throw ex;
+    } finally {
+        if (bufferedReader != null) {
+            try {
+                bufferedReader.close();
+            } catch (IOException ex) {
+                throw ex;
+            }
+        }
+    }
+
+    body = stringBuilder.toString();
+    return body;
+  }
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
       String value = request.getParameter(name);

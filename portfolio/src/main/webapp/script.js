@@ -42,9 +42,9 @@ function addRandomGreeting() {
 function getServerName() {
     fetch('/data',{method:"POST", headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      body: "work"
-    }}).then(response => response.json()).then((stats) => {
+      'Content-Type': 'application/json'},
+      body: getUserInput()
+    }).then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');
         nameContainer.innerHTML="";
         for(let i = 0; i < stats.length; i++){
@@ -54,6 +54,10 @@ function getServerName() {
     });
 }
 
+function getUserInput() {
+    var input = document.getElementById("text-area").value;
+    return input;
+}
 
 function createListElement(text) {
     const liElement = document.createElement('li');
