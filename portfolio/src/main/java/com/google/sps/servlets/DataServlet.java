@@ -51,17 +51,17 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
-
+ 
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String inputText = getParameter(request, "text-input", "");
     names.add(inputText);
-
+ 
     Entity taskEntity = new Entity("Task");
     taskEntity.setProperty("comment", inputText);
-
+ 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);
-
+ 
     response.sendRedirect("/index.html");
     }
 
