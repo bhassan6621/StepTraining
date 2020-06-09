@@ -16,7 +16,7 @@
  * Adds a random greeting to the page.
  */
 
-   var count = 0;
+var count = 0;
 
 function addRandomGreeting() {
   const greetings =
@@ -28,7 +28,7 @@ function addRandomGreeting() {
         'My current binge is Greys Anatomy'];
 
   // Pick a random greeting.
-  if(count >= greetings.length){
+  if(count >= greetings.length) {
       count = 0;
   }
   const greeting = greetings[count];
@@ -36,4 +36,21 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+}
+
+function getServerName() {
+    fetch('/data').then(response => response.json()).then((stats) => {
+        const nameContainer = document.getElementById('name-container');
+        nameContainer.innerHTML="";
+        for(let i = 0; i < stats.length; i++){
+            nameContainer.appendChild(
+            createListElement(stats[i]));
+        }
+    });
+}
+
+function createListElement(text) {
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }

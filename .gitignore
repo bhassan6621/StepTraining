@@ -1,2 +1,7 @@
 target/
 .idea
+pom.xml.*
+release.properties
+.mvn/wrapper/maven-wrapper.jar
+portfolio/target/**
+

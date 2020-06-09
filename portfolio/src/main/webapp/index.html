@@ -16,13 +16,25 @@
             <button onclick="addRandomGreeting()">Random Fact</button>
             <div id="greeting-container"></div>
       </div>
-        <!--row of photos -->
+      
+      <form action="/data" method="POST">
+            <p>What is a fun fact about you? </p>
+            <textarea name="text-input"> type here... </textarea>
+            <br/></br>
+            <input type="submit" name="submit" value="submit" >
+      </form>
+        
+      <button onClick="getServerName()"> Click to view comments </button>
+      <div id="name-container"></div>
+      
+       <!--row of photos -->
             <img class="pictures" alt="sunset" src="/images/imageOne.jpg"/>
             <img class="pictures" alt="dandelion" src="/images/imageTwo.jpg"/>
             <img class="pictures" alt="san francisco" src="/images/imageThree.jpg"/>
             <img class="pictures" alt="palace of fine arts" src="/images/imageFour.jpg"/>
             <img class="pictures" alt="brooklyn bridge" src="/images/imageFive.jpg"/>
             <img class="pictures" alt="flower" src="/images/imageSix.jpg"/>
+
     </div>
   </body>
 </html>
