@@ -21,12 +21,14 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import java.io.IOException;
+import java.util. *;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import com.google.gson.Gson;
+import java.util.concurrent.LinkedBlockingQueue; 
  
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -35,7 +37,7 @@ public class DataServlet extends HttpServlet {
   private ArrayList<String> names = new ArrayList<String>();
  
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+ public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Task").addSort("comment", SortDirection.DESCENDING);
  
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -53,7 +55,7 @@ public class DataServlet extends HttpServlet {
   }
  
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String inputText = getParameter(request, "text-input", "");
+    String inputText = getParameter(request, "text-area", "");
     names.add(inputText);
  
     Entity taskEntity = new Entity("Task");
@@ -61,9 +63,18 @@ public class DataServlet extends HttpServlet {
  
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);
+    
+    StringBuilder text = new StringBuilder();
+    text.append(request.getReader());
+    
+    log("testing to see if i could get the string from body: " + text.toString());
+    // String json = convertToJsonUsingGson(names);
+    // response.setContentType("application/json;");
+    // response.getWriter().println(names);
  
-    response.sendRedirect("/index.html");
+    doGet(request,response);
     }
+
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
       String value = request.getParameter(name);

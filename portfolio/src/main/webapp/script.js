@@ -25,6 +25,7 @@ function addRandomGreeting() {
         'My favorite book is The Fountainhead by Ayn Rand', 
         'I am from Guyana',
         'My favorite food is burgers!',
+        
         'My current binge is Greys Anatomy'];
 
   // Pick a random greeting.
@@ -39,7 +40,11 @@ function addRandomGreeting() {
 }
 
 function getServerName() {
-    fetch('/data').then(response => response.json()).then((stats) => {
+    fetch('/data',{method:"POST", headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      body: "work"
+    }}).then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');
         nameContainer.innerHTML="";
         for(let i = 0; i < stats.length; i++){
@@ -48,6 +53,7 @@ function getServerName() {
         }
     });
 }
+
 
 function createListElement(text) {
     const liElement = document.createElement('li');
