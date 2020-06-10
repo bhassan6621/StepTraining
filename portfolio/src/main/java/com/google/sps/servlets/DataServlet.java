@@ -40,7 +40,7 @@ public class DataServlet extends HttpServlet {
   
   private ArrayList<String> names = new ArrayList<String>();
 
-    @Override
+  @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     /** stores user input into DB */
     String inputText = getBodyData(request);
@@ -64,7 +64,7 @@ public class DataServlet extends HttpServlet {
     }
  
     String json = convertToJsonUsingGson(commentsFromDB);
-    response.setContentType("text/plain");
+    response.setContentType("application/json");
     response.getWriter().println(json);
     }
 

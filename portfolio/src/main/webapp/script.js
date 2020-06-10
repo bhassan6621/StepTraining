@@ -40,8 +40,8 @@ function addRandomGreeting() {
 
 function addComment() {
     fetch('/data',{method: "POST", headers: {
-      'Accept': 'text/plain',
-      'Content-Type': 'text/plain'},
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'},
       body: getUserInput()
     }).then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');
