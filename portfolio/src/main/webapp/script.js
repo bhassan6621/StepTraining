@@ -25,7 +25,6 @@ function addRandomGreeting() {
         'My favorite book is The Fountainhead by Ayn Rand', 
         'I am from Guyana',
         'My favorite food is burgers!',
-        
         'My current binge is Greys Anatomy'];
 
   // Pick a random greeting.
@@ -39,15 +38,15 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-function getServerName() {
-    fetch('/data',{method:"POST", headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'},
+function addComment() {
+    fetch('/data',{method: "POST", headers: {
+      'Accept': 'text/plain',
+      'Content-Type': 'text/plain'},
       body: getUserInput()
     }).then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');
-        nameContainer.innerHTML="";
-        for(let i = 0; i < stats.length; i++){
+        nameContainer.innerHTML = "";
+        for(let i = 0; i < stats.length; i++) {
             nameContainer.appendChild(
             createListElement(stats[i]));
         }
@@ -55,8 +54,7 @@ function getServerName() {
 }
 
 function getUserInput() {
-    var input = document.getElementById("text-area").value;
-    return input;
+    return document.getElementById("text-area").value;
 }
 
 function createListElement(text) {
