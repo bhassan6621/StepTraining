@@ -38,15 +38,23 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-function getServerName() {
-    fetch('/data').then(response => response.json()).then((stats) => {
+function addComment() {
+    fetch('/data',{method: "POST", headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'},
+      body: getUserInput()
+    }).then(response => response.json()).then((stats) => {
         const nameContainer = document.getElementById('name-container');
-        nameContainer.innerHTML="";
-        for(let i = 0; i < stats.length; i++){
+        nameContainer.innerHTML = "";
+        for(let i = 0; i < stats.length; i++) {
             nameContainer.appendChild(
             createListElement(stats[i]));
         }
     });
+}
+
+function getUserInput() {
+    return document.getElementById("text-area").value;
 }
 
 function createListElement(text) {
