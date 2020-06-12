@@ -6,9 +6,12 @@
     <meta name="keywords" content="Bibi, Bibi Hassan, Portfolio, random fact about me"/>
     <link rel="stylesheet" href="style.css">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpzTapNmbcQ06wBje44gjCYSAIKDk9imw">
+    </script>
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="initMap()">
     <div id="content">
       <div id="header">
             <h1 id="headerText">BIBI HASSAN</h1>
@@ -30,6 +33,11 @@
         <div id="experienceSection"> 
             <h1> My Experience </h1>
             <div id="chart-container"></div>
+        </div>
+
+        <div id="mapSection">
+            <h1> Places Visited </h1>
+            <div id="map"></div>
         </div>
 
         <h2> Comments </h2>

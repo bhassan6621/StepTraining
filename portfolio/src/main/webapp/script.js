@@ -19,6 +19,7 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(experienceChart);
 
 let count = 0;
+var map;
 
 function addRandomGreeting() {
   const greetings =
@@ -79,6 +80,36 @@ function experienceChart(){
     const chart = new google.visualization.PieChart(
         document.getElementById('chart-container'));
     chart.draw(data, options);
+}
+
+function initMap() {
+    // var centerPoint = new google.maps.LatLng(2.8,-187.3);
+    const map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 3, center: {lat: 2.8, lng: -187.3}});
+    
+    const NYMarker = new google.maps.Marker({
+        position: {lat: 40.77, lng: -73.97},
+        map: map,
+        title: 'Central Park'
+    });
+
+    const GYMarker = new google.maps.Marker({
+        position: {lat: 5.68, lng: -57.39},
+        map: map,
+        title: 'Guyana'
+    });
+    
+    const CAMarker = new google.maps.Marker({
+        position: {lat: 38.01, lng: -122.56},
+        map: map,
+        title: 'San Rafeal'
+    });
+
+     const UKMarker = new google.maps.Marker({
+        position: {lat: 53.51, lng: -2.31},
+        map: map,
+        title: 'Manchester, UK'
+    });
 }
 
 function getUserInput() {

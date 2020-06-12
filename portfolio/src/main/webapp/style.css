@@ -49,3 +49,9 @@ button {
     border-top-color: white;
     border-bottom-color: white;
 }
+
+#map{
+    border: thin solid white;
+    height: 500px;
+    width: 100%;
+}
