@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bibi's Portfolio</title>
+    <meta name="keywords" content="Bibi, Bibi Hassan, Portfolio, random fact about me"/>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="header">
+            <h1 id="headerText">BIBI HASSAN</h1>
+            <h2>"Feet on the ground, heart on my sleeves, and head in the clouds." </h2>
+            <h2>Click here for a random fact about me:</h2>
+            <button onclick="addRandomGreeting()">Random Fact</button>
+            <div id="greeting-container"></div>
+      </div>
+      
+       <!--row of photos -->
+       <h1 text-align="center"> My Photos </h1>
+        <img class="pictures" alt="sunset" src="/images/imageOne.jpg"/>
+        <img class="pictures" alt="dandelion" src="/images/imageTwo.jpg"/>
+        <img class="pictures" alt="san francisco" src="/images/imageThree.jpg"/>
+        <img class="pictures" alt="palace of fine arts" src="/images/imageFour.jpg"/>
+        <img class="pictures" alt="brooklyn bridge" src="/images/imageFive.jpg"/>
+        <img class="pictures" alt="flower" src="/images/imageSix.jpg"/>
+        
+        <div id="experienceSection"> 
+            <h1> My Experience </h1>
+            <div id="chart-container"></div>
+        </div>
+
+        <h2> Comments </h2>
+        <form>
+            <input type="text" id="text-area"/>
+            <input type="button" value="submit" onclick="addComment()"/>
+        </form>
+
+      <div id="comment-container"></div>
+
+    </div>
+  </body>
+</html>

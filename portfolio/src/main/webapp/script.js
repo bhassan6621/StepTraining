@@ -15,8 +15,10 @@
 /**
  * Adds a random greeting to the page.
  */
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(experienceChart);
 
-var count = 0;
+let count = 0;
 
 function addRandomGreeting() {
   const greetings =
@@ -44,13 +46,39 @@ function addComment() {
       'Content-Type': 'application/json'},
       body: getUserInput()
     }).then(response => response.json()).then((stats) => {
-        const nameContainer = document.getElementById('name-container');
+        const nameContainer = document.getElementById('comment-container');
         nameContainer.innerHTML = "";
         for(let i = 0; i < stats.length; i++) {
             nameContainer.appendChild(
             createListElement(stats[i]));
         }
     });
+}
+
+function experienceChart(){
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Language');
+    data.addColumn('number', 'Years');
+        data.addRows([
+            ['Python', 2],
+            ['Html/Css', 5],
+            ['Java', 4],
+            ['C++', 1],
+            ['JS', 1]
+        ]);
+
+    const options = {
+        'title': 'Experience',
+        'height': 550,
+        'is3D': true,
+        color: 'white',
+        backgroundColor: 'transparent',
+        legend : { position: 'bottom' }
+    };
+
+    const chart = new google.visualization.PieChart(
+        document.getElementById('chart-container'));
+    chart.draw(data, options);
 }
 
 function getUserInput() {
