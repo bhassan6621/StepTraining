@@ -19,7 +19,7 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(experienceChart);
 
 let count = 0;
-var map;
+let map;
 
 function addRandomGreeting() {
   const greetings =
