@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a greeting to the page.
  */
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(experienceChart);
@@ -56,7 +56,7 @@ function addComment() {
     });
 }
 
-function experienceChart(){
+function experienceChart() {
     const data = new google.visualization.DataTable();
     data.addColumn('string', 'Language');
     data.addColumn('number', 'Years');
@@ -83,7 +83,6 @@ function experienceChart(){
 }
 
 function initMap() {
-    // var centerPoint = new google.maps.LatLng(2.8,-187.3);
     const map = new google.maps.Map(
         document.getElementById('map'), {zoom: 3, center: {lat: 2.8, lng: -187.3}});
     
