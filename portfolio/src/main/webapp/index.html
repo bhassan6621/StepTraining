@@ -5,9 +5,13 @@
     <title>Bibi's Portfolio</title>
     <meta name="keywords" content="Bibi, Bibi Hassan, Portfolio, random fact about me"/>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpzTapNmbcQ06wBje44gjCYSAIKDk9imw">
+    </script>
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="initMap()">
     <div id="content">
       <div id="header">
             <h1 id="headerText">BIBI HASSAN</h1>
@@ -17,20 +21,32 @@
             <div id="greeting-container"></div>
       </div>
       
-      <form>
-        <input type="text" id="text-area"/>
-        <input type="button" value="submit" onclick="addComment()"/>
-      </form>
-
-      <div id="name-container"></div>
-      
        <!--row of photos -->
-            <img class="pictures" alt="sunset" src="/images/imageOne.jpg"/>
-            <img class="pictures" alt="dandelion" src="/images/imageTwo.jpg"/>
-            <img class="pictures" alt="san francisco" src="/images/imageThree.jpg"/>
-            <img class="pictures" alt="palace of fine arts" src="/images/imageFour.jpg"/>
-            <img class="pictures" alt="brooklyn bridge" src="/images/imageFive.jpg"/>
-            <img class="pictures" alt="flower" src="/images/imageSix.jpg"/>
+       <h1 text-align="center"> My Photos </h1>
+        <img class="pictures" alt="sunset" src="/images/imageOne.jpg"/>
+        <img class="pictures" alt="dandelion" src="/images/imageTwo.jpg"/>
+        <img class="pictures" alt="san francisco" src="/images/imageThree.jpg"/>
+        <img class="pictures" alt="palace of fine arts" src="/images/imageFour.jpg"/>
+        <img class="pictures" alt="brooklyn bridge" src="/images/imageFive.jpg"/>
+        <img class="pictures" alt="flower" src="/images/imageSix.jpg"/>
+        
+        <div id="experienceSection"> 
+            <h1> My Experience </h1>
+            <div id="chart-container"></div>
+        </div>
+
+        <div id="mapSection">
+            <h1>Places Visited</h1>
+            <div id="map"></div>
+        </div>
+
+        <h2>Comments</h2>
+        <form>
+            <input type="text" id="text-area"/>
+            <input type="button" value="submit" onclick="addComment()"/>
+        </form>
+
+      <div id="comment-container"></div>
 
     </div>
   </body>
